@@ -66,21 +66,6 @@ option = st.sidebar.radio(
     ('General Script', 'Specific Database'))
 
 
-if 'generated1' not in st.session_state:
-    st.session_state['generated1'] = []
-
-if 'past1' not in st.session_state:
-    st.session_state['past1'] = []
-    
-if 'generated2' not in st.session_state:
-    st.session_state['generated2'] = []
-
-if 'past2' not in st.session_state:
-    st.session_state['past2'] = []
-             
-
-             
-
 
 if option =='General Script':
     def get_text():
@@ -98,15 +83,7 @@ if option =='General Script':
         message(user_input, is_user=True)
         
         
-#         st.session_state.past1.append(user_input)
-#         st.session_state.generated1.append(output)
-    
-             
-#     if st.session_state['generated1']:
-    
-#         for i in range(len(st.session_state['generated1'])-1, -1, -1):
-#             message(st.session_state["generated1"][i], key=str(i))
-#             message(st.session_state['past1'][i], is_user=True, key=str(i) + '_user')
+
             
 else:
     def get_text():
@@ -118,10 +95,9 @@ else:
     
     if uploaded_file!=None:
         b = uploaded_file.getvalue()
-#         with open(bytes_data) as f:
         schema = bytes.decode(b, 'utf-8')
             
-#         st.write(schema)
+
         if user_input:
             output = generate_specific_response(user_input,schema)
             
@@ -129,12 +105,4 @@ else:
             message(user_input, is_user=True)
         
         
-#             st.session_state.past2.append(user_input)
-#             st.session_state.generated2.append(output)
-            
-#     if st.session_state['generated2']:
-    
-#         for i in range(len(st.session_state['generated2'])-1, -1, -1):
-#             message(st.session_state["generated2"][i], key=str(i))
-#             message(st.session_state['past2'][i], is_user=True, key=str(i) + '_user')
         
